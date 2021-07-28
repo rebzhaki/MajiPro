@@ -15,9 +15,9 @@ class CreateBillPaymentsTable extends Migration
     {
         Schema::create('bill_payments', function (Blueprint $table) {
             $table->id();
-            $table->string('bill_id');   
-            $table->string('payment_id');
-            $table->string( 'amount');
+            $table->integer('bill_id');   
+            $table->integer('payment_id');
+            $table->float( 'amount');
             $table->timestamps();
         });
     }

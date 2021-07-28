@@ -3,7 +3,14 @@
 @endsection
 @section('content')
 <div class="page-header">
-	<h2>Tarrifs</h2>
+		<div class="row">
+	<div class="col-9">
+		<h2>Tarrifs</h2>
+	</div>
+		<div class="col">
+		<a href="/tarrif/create" role="button" class="btn btn-success"><i class="fas fa-plus"></i> add tarrif</a>
+	</div>
+	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">
@@ -12,7 +19,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Description</th>
-					<th>Price</th>
+					<th>Price (m<sup>3</sup>)</th>
 					<th></th>
 				</tr>
 			</thead>

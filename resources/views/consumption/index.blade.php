@@ -3,7 +3,14 @@
 @endsection
 @section('content')
 <div class="page-header">
-	<h2>Consumption</h2>
+		<div class="row">
+	<div class="col-9">
+		<h2>Consumption</h2>
+	</div>
+		<div class="col">
+		<a href="/consumption/create" role="button" class="btn btn-success"><i class="fas fa-plus"></i> add consumption</a>
+	</div>
+	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">
@@ -11,7 +18,7 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Consumption/cubic meter</th>
+					<th>Consumption (m<sup>3</sup>)</th>
 					<th>Date</th>
 					<th></th>
 				</tr>
@@ -19,7 +26,7 @@
 			<tbody>
 				@foreach($consumptions as $consumption)
 				<tr>
-					<td>{{$consumption->name}}</td>
+					<td>{{$consumption->customer->name}}</td>
 					<td>{{$consumption->consumption}}</td>
 					<td>{{$consumption->date}}</td>
 					<td><a href="/consumption/{{$consumption->id}}" class="btn btn-sm btn-info">View</a></td>

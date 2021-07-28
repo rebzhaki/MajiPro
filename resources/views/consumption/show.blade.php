@@ -10,7 +10,7 @@
 	<div class="col-sm-6">
 		<table class="table table-condensed table-bordered">		
 			<tbody>
-				<tr><th>Name</th><td>{{$consumption->name}}</td></tr>
+				<tr><th>Name</th><td>{{$consumption->customer->name}}</td></tr>
 				<tr><th>Consumption</th><td>{{$consumption->consumption}}</td></tr>
 				<tr><th>Date</th><td>{{$consumption->date}}</td></tr>
 			</tbody>

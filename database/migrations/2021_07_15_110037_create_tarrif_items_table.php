@@ -15,10 +15,10 @@ class CreateTarrifItemsTable extends Migration
     {
         Schema::create('tarrif_items', function (Blueprint $table) {
             $table->id();
-            $table->string('tarrif_id'); 
+            $table->integer('tarrif_id'); 
             $table->string('name'); 
             $table->string('type');
-            $table->string( 'amount');
+            $table->float( 'amount');
             $table->timestamps();
         });
     }

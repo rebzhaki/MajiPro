@@ -16,8 +16,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
+         $this->authorize('viewAny', Customer::class);
          $customers=Customer::all();
-       
          return view('customer.index', compact('customers'));
     }
 
@@ -29,6 +29,7 @@ class CustomerController extends Controller
     public function create()
     {
         //
+         $this->authorize('create', Customer::class);
         $tarrifs=Tarrif::all();
         return view('customer.create',compact('tarrifs'));
     }
@@ -42,6 +43,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create', Customer::class);
         $input=$request->all();
         $customer=Customer::create($input);
         return redirect('/customer/'.$customer->id);
@@ -56,6 +58,7 @@ class CustomerController extends Controller
     public function show(Customer $customer)
     {
         //
+         $this->authorize('view', $customer);
         return view('customer.show', compact('customer'));
     }
 
@@ -68,6 +71,7 @@ class CustomerController extends Controller
     public function edit(Customer $customer)
     {
         //
+        $this->authorize('update', $customer);
         $tarrifs=Tarrif::all();
         return view('customer.edit', compact('customer','tarrifs'));
     }
@@ -82,6 +86,7 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         //
+        $this->authorize('update', $customer);
         $input=$request->all();
         $customer->update($input);
         return redirect('/customer/'.$customer->id);
@@ -96,6 +101,7 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+        $this->authorize('delete', $customer);
         $customer->delete();
         return redirect('/customer');
     }

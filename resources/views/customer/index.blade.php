@@ -1,7 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <div class="page-header">
-	<h2>Customers</h2>
+	<div class="row">
+	<div class="col-9">
+		<h2>Customers</h2>
+	</div>
+	<div class="col">
+		<a href="/customer/create" role="button" class="btn btn-success"><i class="fas fa-plus"></i> add customer</a>
+	</div>
+	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">
@@ -26,7 +33,7 @@
 					<td>{{$customer->last_name}}</td>		
 					<td>{{$customer->ID_number}}</td>					
 					<td>{{$customer->address}}</td>					
-					<td>{{$customer->tarrif_id}}</td>
+					<td>{{$customer->tarrif->name??''}}</td>
 					<td><a href="/customer/{{$customer->id}}" class="btn btn-sm btn-info">View</a></td>
 				</tr>
 				@endforeach

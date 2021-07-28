@@ -3,7 +3,15 @@
 @endsection
 @section('content')
 <div class="page-header">
+	
+	<div class="row">
+	<div class="col-9">
 	<h2>user</h2>
+	</div>
+		<div class="col">
+		<a href="/user/create" role="button" class="btn btn-success"><i class="fas fa-plus"></i> add user</a>
+	</div>
+	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">

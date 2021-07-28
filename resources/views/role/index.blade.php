@@ -4,7 +4,14 @@
 @section('content')
 
 <div class="page-header">
+		<div class="row">
+	<div class="col-9">
 	<h2>Roles</h2>
+	</div>
+		<div class="col">
+		<a href="/role/create" role="button" class="btn btn-success"><i class="fas fa-plus"></i> add role</a>
+	</div>
+	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">

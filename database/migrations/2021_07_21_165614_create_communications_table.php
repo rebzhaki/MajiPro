@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateCommunicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,20 @@ class CreateRolesTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('roles', function (Blueprint $table) {
+
+     {
+        Schema::create('communications', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->string('type')->nullable();
+            $table->date('date')->nullable();
+            $table->time('time')->nullable();
+            $table->string('message');
+            $table->integer('customer_id');
             $table->timestamps();
         });
     }
+   
+    
 
     /**
      * Reverse the migrations.
@@ -28,6 +34,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('communications');
     }
 }
