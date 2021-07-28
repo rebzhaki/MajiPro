@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::resource('customer','App\Http\Controllers\CustomerController');
 Route::resource('role','App\Http\Controllers\RoleController');
 Route::resource('tarrif','App\Http\Controllers\TarrifController');
+Route::resource('tarrifItem','App\Http\Controllers\TarrifItemController');
 Route::resource('consumption','App\Http\Controllers\ConsumptionController');
 Route::resource('user','App\Http\Controllers\UserController');
 Route::resource('bill','App\Http\Controllers\BillController');
@@ -32,3 +33,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    // Only authenticated users may access this route...
+})->middleware('auth');

@@ -8,30 +8,21 @@
 
 <div class="row">
 	<div class="col-sm-6">
-		
+		<h5 class="card-title">Enter consumption</h5>
 		<form action="/consumption" method="POST">
 			@csrf
-		<div class="card w-75">
-			<div class="card-body">
-				<h5 class="card-title">Register consumption</h5>
-			<div class="form-group">
-				<label>Name</label>
-				<input type="text" name="name" class="form-control">
-			</div>
 			<div class="form-group">
 				<label>Date</label>
-				<input type="date" name="date" class="form-control">
+				<input type="date" name="date" class="form-control" value="{{date('Y-m-d')}}">
 			</div>
 			<div class="form-group">
-				<label>User</label>
-				<input type="text" name="user" class="form-control">
+				<label>Previous reading</label>
+				<textarea name="previous_reading" class="form-control"></textarea>
 			</div>
 			<div class="form-group">
-				<label>Consumption</label>
-				<textarea name="consumption" class="form-control"></textarea>
+				<label>Current reading</label>
+				<textarea name="current_reading" class="form-control"></textarea>
 			</div>
-			
-
 			<button class="btn btn-sm btn-success" type="submit">Save</button>
 		</form>
 

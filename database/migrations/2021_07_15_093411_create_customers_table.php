@@ -21,14 +21,14 @@ class CreateCustomersTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('ID_type')->nullable();
-            $table->string('ID_number')->nullable();
+            $table->integer('ID_number')->nullable();
             $table->string('LR_number')->nullable();
             $table->string('address')->nullable();
             $table->string('location')->nullable();
             $table->string('place_id')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
-            $table->string('tarrif_id')->nullable();
+            $table->integer('tarrif_id')->nullable();
             $table->timestamps();
         });
     }

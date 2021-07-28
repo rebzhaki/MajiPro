@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
+use Hash;
 
 class UserController extends Controller
 {
@@ -27,7 +30,9 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('user.create');
+         $roles=Role::all();
+         $permissions=Permission::all();
+         return view('user.create',compact('roles','permissions'));
     }
 
     /**
@@ -40,7 +45,9 @@ class UserController extends Controller
     {
         //
         $input=$request->all();
+        $input['password']=Hash::make($input['password']);
         $user=User::create($input);
+        $user->syncPermissions($input['permissions']);
         return redirect('/user/'.$user->id);
     }
 
@@ -54,7 +61,8 @@ class UserController extends Controller
     {
         //
         $user=User::find($id);
-        return view('user.show', compact('user'));
+        $permissions=Permission::all();
+        return view('user.show', compact('user','permissions'));
     }
 
     /**
@@ -66,8 +74,10 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-          $user=User::find($id);
-        return view('user.edit', compact('user'));
+        $user=User::find($id);
+        $roles=Role::all();
+        $permissions=Permission::all();
+        return view('user.edit', compact('user','permissions','roles'));
     }
 
     /**
@@ -82,7 +92,13 @@ class UserController extends Controller
         //
        $input=$request->all();
         $user=User::find($id);
+        if($input['password'] == ''){
+           unset($input['password']); 
+        }else{
+            $input['password']=Hash::make($input['password']);
+        }
         $user->update($input);
+        $user->syncPermissions($input['permissions']);
         return redirect('/user/'.$user->id);
     }
     }

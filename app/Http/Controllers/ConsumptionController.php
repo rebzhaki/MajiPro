@@ -45,6 +45,7 @@ class ConsumptionController extends Controller
         //
         $input=$request->all();
         $input['user_id']=Auth::user()->id;
+        $input['consumption']=$input['current_reading']-$input['previous_reading'];
         $consumption=Consumption::create($input);
         return redirect('/consumption/'.$consumption->id);
     }

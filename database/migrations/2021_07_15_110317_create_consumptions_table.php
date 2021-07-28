@@ -15,10 +15,12 @@ class CreateConsumptionsTable extends Migration
     {
         Schema::create('consumptions', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_id'); 
-            $table->string('date'); 
-            $table->string('user_id'); 
-            $table->string('consumption');
+            $table->integer('customer_id'); 
+            $table->date('date'); 
+            $table->integer('user_id');
+            $table->float('previous_reading');
+            $table->float('current_reading');
+            $table->float('consumption');
             $table->timestamps();
         });
     }

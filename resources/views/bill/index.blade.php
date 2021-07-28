@@ -23,7 +23,7 @@
 			<tbody>
 				@foreach($bills as $bill)
 				<tr>
-					<td>{{$bill->name}}</td>
+					<td>{{$bill->customer->name}}</td>
 					<td>{{$bill->start_date}}</td>
 					<td>{{$bill->end_date}}</td>
 					<td>{{$bill->date}}</td>

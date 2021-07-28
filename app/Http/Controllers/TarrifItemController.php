@@ -41,8 +41,8 @@ class TarrifItemController extends Controller
     public function store(Request $request)
     {
         //
-        $input=request->all();
-        $tarrifItem=TarriflItem::create($input);
+        $input=$request->all();
+        $tarrifItem=TarrifItem::create($input);
         return redirect('/tarrif/'.$tarrifItem->tarrif_id);
     }
 

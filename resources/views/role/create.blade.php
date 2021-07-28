@@ -2,7 +2,9 @@
 @section('css')
 @endsection
 @section('content')
-
+<div class="page-header">
+	<h2>Role</h2>
+</div>
 <div class="row">
 <div class="col-sm-6">
 	<div class="card w-75">
@@ -19,6 +21,13 @@
 				<label>Description</label>
 				<textarea name="description" class="form-control"></textarea>
 			</div>
+			<legend>Select permissions below</legend>
+			@foreach($permissions as $permission)
+			<div class="custom-control custom-switch">
+  			  <input type="checkbox" name="permissions[]" class="custom-control-input" id="customSwitch{{$permission->id}}" value="{{$permission->name}}">
+			  <label class="custom-control-label" for="customSwitch{{$permission->id}}">{{$permission->name}}</label>
+			</div>
+			@endforeach
 			
 			<button class="btn btn-sm btn-success" type="submit">Save</button>
 		</form>

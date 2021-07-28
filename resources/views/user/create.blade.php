@@ -2,8 +2,9 @@
 @section('css')
 @endsection
 @section('content')
-
-
+<div class="page-header">
+	<h2>User</h2>
+</div>
 <div class="row">
 	<div class="col-sm-6">
 		
@@ -32,8 +33,20 @@
 			</div>
 			<div class="form-group">
 				<label>Role</label>
-				<input type="text" name="role_id" class="form-control">
+				<select class="form-control" name="role_id">
+				 <option value="">Choose</option>
+  				 	@foreach ($roles as $role)
+       			   		<option value="{{ $role->id }}"> {{ $role->name }}</option>
+       			    @endforeach
+				</select>
 			</div>
+			<legend>Select permissions below</legend>
+			@foreach($permissions as $permission)
+			<div class="custom-control custom-switch">
+  			  <input type="checkbox" name="permissions[]" class="custom-control-input" id="customSwitch{{$permission->id}}" value="{{$permission->name}}">
+			  <label class="custom-control-label" for="customSwitch{{$permission->id}}">{{$permission->name}}</label>
+			</div>
+			@endforeach
 			<button class="btn btn-sm btn-success" type="submit">Save</button>
 		</form>
 
