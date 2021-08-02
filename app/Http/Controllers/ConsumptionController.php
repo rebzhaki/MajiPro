@@ -18,6 +18,7 @@ class ConsumptionController extends Controller
     public function index()
     {
         //
+        $this->authorize('viewAny', Consumption::class);
         $consumptions=Consumption::all();
         return view('consumption.index', compact('consumptions'));
     }
@@ -30,6 +31,7 @@ class ConsumptionController extends Controller
     public function create()
     {
         //
+        $this->authorize('create', Consumption::class);
         $customers=Customer::all();
         return view('consumption.create',compact('customers'));
     }
@@ -43,6 +45,7 @@ class ConsumptionController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create', Consumption::class);
         $input=$request->all();
         $input['user_id']=Auth::user()->id;
         $input['consumption']=$input['current_reading']-$input['previous_reading'];
@@ -59,7 +62,7 @@ class ConsumptionController extends Controller
     public function show(Consumption $consumption)
     {
         //
-        
+        $this->authorize('view', $consumption);
         return view('consumption.show', compact('consumption'));
     }
 
@@ -72,7 +75,7 @@ class ConsumptionController extends Controller
     public function edit(Consumption $consumption)
     {
         //
-        
+        $this->authorize('update', $consumption);
         $customers=Customer::all();
         return view('consumption.edit', compact('consumption','customers'));
     }
@@ -87,6 +90,7 @@ class ConsumptionController extends Controller
     public function update(Request $request, Consumption $consumption)
     {
         //
+        $this->authorize('update', $consumption);
         $input=$request->all();
         $consumption->update($input);
         return redirect('/consumption/'.$consumption->id);
@@ -101,6 +105,7 @@ class ConsumptionController extends Controller
     public function destroy(Consumption $consumption)
     {
         //
+        $this->authorize('delete', $consumption);
         $consumption->delete();
         return redirect('/consumption');
     }

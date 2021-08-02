@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('customer','App\Http\Controllers\CustomerController');
 Route::resource('role','App\Http\Controllers\RoleController');
@@ -26,13 +27,9 @@ Route::resource('user','App\Http\Controllers\UserController');
 Route::resource('bill','App\Http\Controllers\BillController');
 Route::resource('payment','App\Http\Controllers\PaymentController');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', function () {
-    // Only authenticated users may access this route...
-})->middleware('auth');
+// Route::get('/home', function () {
+//     // Only authenticated users may access this route...
+// })->middleware('auth');

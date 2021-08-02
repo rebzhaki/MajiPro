@@ -32,7 +32,9 @@
 			@method('DELETE')
 			<div class="btn-group">
 				<a href="/role/{{$role->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
+				@can('Delete')
 				<button type="submit" class="btn btn-sm btn-danger">Delete</button>
+				@endcan
 				<a href="/role/" class="btn btn-sm btn-secondary">Back</a>
 			</div>
 		</form>

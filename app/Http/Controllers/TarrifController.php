@@ -15,8 +15,9 @@ class TarrifController extends Controller
     public function index()
     {
         //
-         $tarrifs=Tarrif::all();
-         return view('tarrif.index', compact('tarrifs'));
+        $this->authorize('viewAny', Tarrif::class);
+        $tarrifs=Tarrif::all();
+        return view('tarrif.index', compact('tarrifs'));
     }
 
     /**
@@ -27,6 +28,7 @@ class TarrifController extends Controller
     public function create()
     {
         //
+        $this->authorize('create', Tarrif::class);
         return view('tarrif.create');
     }
 
@@ -39,6 +41,7 @@ class TarrifController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create', Tarrif::class);
         $input=$request->all();
         $tarrif=Tarrif::create($input);
         return redirect('/tarrif/'.$tarrif->id);
@@ -53,7 +56,8 @@ class TarrifController extends Controller
     public function show(Tarrif $tarrif)
     {
         //
-         return view('tarrif.show', compact('tarrif'));
+        $this->authorize('view', $tarrif);
+        return view('tarrif.show', compact('tarrif'));
     }
 
     /**
@@ -65,6 +69,7 @@ class TarrifController extends Controller
     public function edit(Tarrif $tarrif)
     {
         //
+        $this->authorize('update', $tarrif);
         return view('tarrif.edit', compact('tarrif'));
     }
 
@@ -78,6 +83,7 @@ class TarrifController extends Controller
     public function update(Request $request, Tarrif $tarrif)
     {
         //
+        $this->authorize('update', $tarrif);
         $input=$request->all();
         $tarrif->update($input);
         return redirect('/tarrif/'.$tarrif->id);
@@ -92,6 +98,7 @@ class TarrifController extends Controller
     public function destroy(Tarrif $tarrif)
     {
         //
+        $this->authorize('delete', $tarrif);
         $tarrif->delete();
         return redirect('/tarrif');
     }

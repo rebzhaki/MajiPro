@@ -8,15 +8,16 @@
 </div>
 <div class="row">
 	<div class="col-sm-6">
-		
-		<form action="/consumption/{{$consumption->id}}" method="POST">
-			@csrf
 		<div class="card w-75">
 			<div class="card-body">
-				<h5 class="card-title">Register consumption</h5>
+		<form action="/consumption/{{$consumption->id}}" method="POST">
+			@csrf
+			@method("PUT")
+
+			<h5 class="card-title">Register consumption</h5>
 			<div class="form-group">
 				<label>Name</label>
-				<input type="text" name="name" class="form-control">
+				<input type="text" name="name" class="form-control" value="{{$consumption->name}}">
 			</div>
 			<div class="form-group">
 				<label>Consumption</label>
@@ -24,7 +25,7 @@
 			</div>
 			<div class="form-group">
 				<label>Date</label>
-				<input type="date" name="date" class="form-control">
+				<input type="date" name="date" class="form-control" value="{{$consumption->date}}">
 			</div>
 
 			<button class="btn btn-sm btn-success" type="submit">Save</button>

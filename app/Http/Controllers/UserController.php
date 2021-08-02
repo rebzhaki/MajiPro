@@ -18,6 +18,7 @@ class UserController extends Controller
     public function index()
     {
         //
+        // $this->authorize('viewAny', User::class);
          $users=User::all();
          return view('user.index', compact('users'));
     }
@@ -30,6 +31,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        // $this->authorize('create', User::class);
          $roles=Role::all();
          $permissions=Permission::all();
          return view('user.create',compact('roles','permissions'));
@@ -44,6 +46,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        // $this->authorize('create', User::class);
         $input=$request->all();
         $input['password']=Hash::make($input['password']);
         $user=User::create($input);
@@ -58,8 +61,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+
     {
         //
+        // $this->authorize('view', $id);
         $user=User::find($id);
         $permissions=Permission::all();
         return view('user.show', compact('user','permissions'));
@@ -74,6 +79,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        // $this->authorize('update', $id);
         $user=User::find($id);
         $roles=Role::all();
         $permissions=Permission::all();
@@ -90,6 +96,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // $this->authorize('update', $id);
        $input=$request->all();
         $user=User::find($id);
         if($input['password'] == ''){

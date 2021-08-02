@@ -9,12 +9,23 @@
 	<div class="col-sm-6">
 		<div class="row">
 			<div class="btn-group">
+				@can('Consumption')
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#consumptionModal">
 	  		<i class="fa fa-plus"></i> Enter Consumption
 	 		</button>
+	 		@endcan
+
+	 		@can('Bills')
 	 			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#billModal">
 	  			<i class="fa fa-plus"></i> Generate Bill
 	 		</button>
+	 		@endcan
+
+	 		@can('Payments')
+	 			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#paymentModal">
+	  			<i class="fa fa-plus"></i> Enter Payment
+	 		</button>
+	 		@endcan
 	 		</div>
 	 	</div>
 	 </div>
@@ -261,8 +272,47 @@
 				<input type="date" name="end_date" class="form-control" value="{{date('Y-m-d')}}">
 			</div></div>
 			<div class="form-group">
-				<label>Consumption im m<sup>3</sup></label>
+				<label>Consumption in m<sup>3</sup></label>
 				<input type="number" step="0.01" name="consumption" class="form-control">
+			</div>
+			<button class="btn btn-sm btn-success" type="submit">Save</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Enter Payment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/payment" method="POST">
+			@csrf
+			<input type="hidden" name="customer_id" value="{{$customer->id}}">
+		
+			<div class="form-group">
+				<label>Date</label>
+				<input type="date" name="date" class="form-control" value="{{date('Y-m-d')}}">
+			</div>
+			<div class="form-group">
+				<label>Mode Of Payment</label>
+				<select name="mode" class="form-control">
+					<option value="">Choose...</option>
+					<option value="Mpesa">Mpesa</option>
+					<option value="Cash">Cash</option>
+				</select>
+			</div>
+				
+			<div class="form-group">
+				<label>Amount in KES</label>
+				<input type="number" step="0.01" name="amount" class="form-control">
 			</div>
 			<button class="btn btn-sm btn-success" type="submit">Save</button>
 		</form>
