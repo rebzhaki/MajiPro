@@ -18,6 +18,7 @@ class PaymentController extends Controller
     public function index()
     {
         //
+        $this->authorize('viewAny', Payment::class);
         $payments=Payment::all();
         return view('payment.index', compact('payments'));
     }
@@ -30,6 +31,7 @@ class PaymentController extends Controller
     public function create()
     {
         //
+        $this->authorize('viewAny', Payment::class);
         $customers=Customer::all();
         return view('payment.create',compact('customers'));
     }
@@ -43,6 +45,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create', Payment::class);
         $input=$request->all();
         $payment=Payment::create($input);
         $this->clearBills($payment);
@@ -58,6 +61,7 @@ class PaymentController extends Controller
     public function show(Payment $payment)
     {
         //
+        $this->authorize('view', $bill);
         return view('payment.show', compact('payment'));
     }
 
@@ -115,6 +119,7 @@ class PaymentController extends Controller
     public function edit(Payment $payment)
     {
         //
+        $this->authorize('update', $payment);
         $customers=Customer::all();
         return view('payment.edit', compact('payment','customers'));
     }
@@ -129,6 +134,7 @@ class PaymentController extends Controller
     public function update(Request $request, Payment $payment)
     {
         //
+        $this->authorize('update', $payment);
         $input=$request->all();
         $this->unclearBills($payment);
         $payment->update($input);
@@ -145,6 +151,7 @@ class PaymentController extends Controller
     public function destroy(Payment $payment)
     {
         //
+        $this->authorize('delete', $bill);
         $this->unclearBills($payment);
         $payment->delete();
         return redirect('/payment');

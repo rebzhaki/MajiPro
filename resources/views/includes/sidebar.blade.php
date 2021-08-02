@@ -1,5 +1,5 @@
 <ul>
-	<li><a href="/customer"><i class="fa fa-users"></i> dashboard</a></li>
+	<li><a href="/"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
 	@can('Customers')
 	<li><a href="/customer"><i class="fa fa-users"></i> Customers</a></li>
 	@endcan
@@ -20,9 +20,9 @@
 	<li><a href="/tarrif"><i class="fa fa-chart-line"></i>  Tarrifs</a></li>
 	@endcan
 
-	
+	@can('Customers')
 	<li><a href="/role"><i class="fa fa-user-cog"></i>  Roles</a></li>
-	
+	@endcan
 
 	@can('Users')	
 	<li><a href="/user"><i class="fa fa-user"></i> Users</a></li>

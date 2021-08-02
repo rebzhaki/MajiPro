@@ -33,7 +33,9 @@
 			@method('DELETE')
 			<div class="btn-group">
 			<a href="/tarrif/{{$tarrif->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
+			@can('Delete')
 			<button type="submit" class="btn btn-sm btn-danger">Delete</button>
+			@endcan
 			</div>
 		</form>
 		</div>
@@ -61,7 +63,9 @@
 				@method('DELETE')
 				<div class="btn-group">
 				<a href="/tarrifItem/{{$item->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+				@can('Delete')
 				<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+				@endcan
 				</div>
 				</form>
 				</td>

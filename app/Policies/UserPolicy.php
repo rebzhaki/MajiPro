@@ -1,12 +1,11 @@
-<?php
+<!-- <?php
 
 namespace App\Policies;
 
-use App\Models\BillPayment;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class BillPaymentPolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -19,18 +18,21 @@ class BillPaymentPolicy
     public function viewAny(User $user)
     {
         //
+        return $user->can('Users');
+        
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillPayment  $billPayment
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, BillPayment $billPayment)
+    public function view(User $user, User $model)
     {
         //
+        return $user->can('Users');
     }
 
     /**
@@ -42,40 +44,43 @@ class BillPaymentPolicy
     public function create(User $user)
     {
         //
+        return $user->can('Users');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillPayment  $billPayment
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, BillPayment $billPayment)
+    public function update(User $user, User $model)
     {
         //
+        return $user->can('Users');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillPayment  $billPayment
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, BillPayment $billPayment)
+    public function delete(User $user, User $model)
     {
         //
+        return $user->can('Users');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillPayment  $billPayment
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, BillPayment $billPayment)
+    public function restore(User $user, User $model)
     {
         //
     }
@@ -84,11 +89,12 @@ class BillPaymentPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillPayment  $billPayment
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, BillPayment $billPayment)
+    public function forceDelete(User $user, User $model)
     {
         //
     }
 }
+ -->

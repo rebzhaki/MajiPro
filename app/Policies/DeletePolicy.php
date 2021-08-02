@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\BillItem;
+use App\Models\Delete;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class BillItemPolicy
+class DeletePolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class BillItemPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillItem  $billItem
+     * @param  \App\Models\Delete  $delete
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, BillItem $billItem)
+    public function view(User $user, Delete $delete)
     {
         //
     }
@@ -48,10 +48,10 @@ class BillItemPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillItem  $billItem
+     * @param  \App\Models\Delete  $delete
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, BillItem $billItem)
+    public function update(User $user, Delete $delete)
     {
         //
     }
@@ -60,10 +60,10 @@ class BillItemPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillItem  $billItem
+     * @param  \App\Models\Delete  $delete
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, BillItem $billItem)
+    public function delete(User $user, Delete $delete)
     {
         //
     }
@@ -72,10 +72,10 @@ class BillItemPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillItem  $billItem
+     * @param  \App\Models\Delete  $delete
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, BillItem $billItem)
+    public function restore(User $user, Delete $delete)
     {
         //
     }
@@ -84,10 +84,10 @@ class BillItemPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\BillItem  $billItem
+     * @param  \App\Models\Delete  $delete
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, BillItem $billItem)
+    public function forceDelete(User $user, Delete $delete)
     {
         //
     }
