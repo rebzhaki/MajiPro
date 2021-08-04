@@ -69,7 +69,7 @@ class BillController extends Controller
         $billItems[]=['narrative'=>$item->name, 'quantity'=>$quantity, 'unit'=>$unit, 'amount'=>$amount, 'status'=>'Active'];
         }
          $total=array_sum(array_column($billItems,'amount'));
-         $billD=['customer_id'=>$input['customer_id'], 'start_date'=>$input['start_date'], 'end_date'=>$input['end_date'], 'date'=>date('Y-m-d'), 'status'=>'Unpaid', 'balance'=>$total, 'amount'=>$total];
+         $billD=['customer_id'=>$input['customer_id'], 'start_date'=>$input['start_date'], 'end_date'=>$input['end_date'], 'date'=>date('Y-m-d'), 'status'=>'Unpaid', 'balance'=>$total, 'amount'=>$total, 'consumption'=>$input['consumption']];
         $bill=Bill::create($billD);
         foreach($billItems as $item){
             $item['bill_id']=$bill->id;
