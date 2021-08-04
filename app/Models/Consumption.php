@@ -14,5 +14,4 @@ class Consumption extends Model
      public function customer(){
         return $this->hasOne('App\Models\Customer', 'id','customer_id');
     }
-    
 }

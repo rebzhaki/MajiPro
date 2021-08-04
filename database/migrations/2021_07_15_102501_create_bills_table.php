@@ -23,7 +23,6 @@ class CreateBillsTable extends Migration
             $table->string('status');
             $table->integer('balance');
             $table->float('amount');
-            $table->float('consumption');
             $table->timestamps();
         });
     }

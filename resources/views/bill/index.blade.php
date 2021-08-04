@@ -23,7 +23,7 @@
 			<tbody>
 				@foreach($bills as $bill)
 				<tr>
-					<td><a href="/customer/{{$bill->customer->id}}" style="text-decoration: none !important;" class="text-dark">{{$bill->customer->name}}</a></td>
+					<td>{{$bill->customer->name}}</td>
 					<td>{{$bill->start_date}}</td>
 					<td>{{$bill->end_date}}</td>
 					<td>{{$bill->date}}</td>

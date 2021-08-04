@@ -64,18 +64,18 @@
 	</div>
 	<div class="col-sm-8">
 		<div class="row">
-		<div class="col-sm-7">
+		<div class="col-sm-6">
 		<div class="row g-3">
 		<div class="card col-sm-6 statistic-card">
 		<div class="card-body">
 		<h5 class="statistic-header">Consumption</h5>
-		<h6 class="statistic">{{number_format($customer->consumptions()->sum('consumption'),2)}} <small>m<sup>3</sup></small></h6>
+		<h6 class="statistic">{{$customer->consumptions()->sum('consumption')}} <small>m<sup>3</sup></small></h6>
 		</div>
 		</div>
 		<div class="card col-sm-6 statistic-card">
 		<div class="card-body">
 		<h5 class="statistic-header">Billed consumption</h5>
-		<h6 class="statistic">{{number_format($customer->bills()->sum('consumption'),2)}}m<sup>3</sup></h6>
+		<h6 class="statistic">0 <small>m<sup>3</sup></small></h6>
 		</div>
 		</div>
 		</div>
@@ -83,18 +83,18 @@
 		<div class="card col-sm-6 statistic-card">
 		<div class="card-body">
 		<h5 class="statistic-header">Total bills</h5>
-			<h6 class="statistic">{{number_format($customer->bills()->sum('amount'),2)}} <small style="font-size: 16px;" class="font-weight-bold">KES</small></h6>
+		<h6 class="statistic">0 <small>KES</small></h6>
 		</div>
 		</div>
 		<div class="card col-sm-6 statistic-card">
 		<div class="card-body">
 		<h5 class="statistic-header">Total payments</h5>
-			<h6 class="statistic">{{number_format($customer->payments()->sum('amount'),2)}} <small style="font-size: 16px;" class="font-weight-bold">KES</small></h6>
+		<h6 class="statistic">0 <small>KES</small></h6>
 		</div>
 		</div>
 		</div>
 		</div>
-		<div class="col-sm-5">
+		<div class="col-sm-6">
 		Graph Space
 		</div>
 		</div>
@@ -273,7 +273,7 @@
 			</div></div>
 			<div class="form-group">
 				<label>Consumption in m<sup>3</sup></label>
-				<input type="number" step="0.01" name="consumption" class="form-control" value="{{number_format($customer->consumptions()->sum('consumption') - $customer->bills()->sum('consumption'),2)}}">
+				<input type="number" step="0.01" name="consumption" class="form-control">
 			</div>
 			<button class="btn btn-sm btn-success" type="submit">Save</button>
 		</form>
@@ -308,11 +308,6 @@
 					<option value="Mpesa">Mpesa</option>
 					<option value="Cash">Cash</option>
 				</select>
-			</div>
-				<div class="form-group">
-				<label>Narative</label>
-				<textarea type="text" class="form-control" name="narrative"></textarea>
-
 			</div>
 				
 			<div class="form-group">

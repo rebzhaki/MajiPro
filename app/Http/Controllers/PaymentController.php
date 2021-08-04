@@ -61,7 +61,7 @@ class PaymentController extends Controller
     public function show(Payment $payment)
     {
         //
-        $this->authorize('view', $payment);
+        $this->authorize('view', $bill);
         return view('payment.show', compact('payment'));
     }
 

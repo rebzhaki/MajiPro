@@ -58,7 +58,6 @@ class CustomerController extends Controller
     public function show(Customer $customer)
     {
         //
-        
          $this->authorize('view', $customer);
         return view('customer.show', compact('customer'));
     }

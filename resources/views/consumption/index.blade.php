@@ -26,7 +26,7 @@
 			<tbody>
 				@foreach($consumptions as $consumption)
 				<tr>
-					<td><a href="/customer/{{$consumption->customer->id}}" style="text-decoration: none !important; ">{{$consumption->customer->name}}</a></td>
+					<td>{{$consumption->customer->name}}</td>
 					<td>{{$consumption->consumption}}</td>
 					<td>{{$consumption->date}}</td>
 					<td><a href="/consumption/{{$consumption->id}}" class="btn btn-sm btn-info">View</a></td>
